@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    var myFirebaseRef = new Firebase('https://burning-heat-2130.firebaseio.com/');
+    myFirebaseRef.authAnonymously(function(error, authData) {
+        if (error) {
+            console.log("Login Failed!", error);
+        } else {
+            console.log("Authenticated successfully with payload:", authData);
+        }
+    });
+    var test = myFirebaseRef.child('test123');
+    test.on('value', function (datasnapshot) {
+        console.log(datasnapshot.val());
+    });
+
+
+</script>
+</body>
+</html>
