@@ -25,6 +25,7 @@ var Profile = React.createClass({
                 console.log("Authenticated successfully with payload:", authData);
             }
         });
+        //dummy comment
         //ref.authWithPassword({
         //    email    : "someone@gmail.com",
         //    password : "some password"
