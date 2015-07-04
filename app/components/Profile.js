@@ -10,13 +10,32 @@ var Profile = React.createClass({
     mixins: [Router.State, ReactFireMixin],
     getInitialState: function () {
         return {
-            notes: ['note1', 'note2','note3'],
+            notes: ['this is my note', 'hello','licorice'],
             bio: {name: 'Tom'},
             repos: [1,2,3]
         }
     },
     componentDidMount: function () {
-        this.ref = new Firebase('https://github-note-taker.firebaseio.com');
+        //this.ref = new Firebase('https://github-note-taker.firebaseio.com');
+        var ref = new Firebase('burning-heat-2130.firebaseio.com');
+        ref.authAnonymously(function(error, authData) {
+            if (error) {
+                console.log("Login Failed!", error);
+            } else {
+                console.log("Authenticated successfully with payload:", authData);
+            }
+        });
+        //ref.authWithPassword({
+        //    email    : "someone@gmail.com",
+        //    password : "some password"
+        //}, function(error, authData) {
+        //    if (error) {
+        //        console.log("Login Failed!", error);
+        //    } else {
+        //        console.log("Authenticated successfully with payload:", authData);
+        //    }
+        //});
+        this.ref = ref;
         var childRef = this.ref.child(this.getParams().username);
         this.bindAsArray(childRef, 'notes');
     },
