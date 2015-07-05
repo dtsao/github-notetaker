@@ -17,6 +17,7 @@ var Profile = React.createClass({
         }
     },
     componentDidMount: function () {
+        console.log('Profile: componentDidMount');
         //this.ref = new Firebase('https://github-note-taker.firebaseio.com');
         var ref = new Firebase('burning-heat-2130.firebaseio.com');
         ref.authAnonymously(function (error, authData) {
@@ -54,6 +55,7 @@ var Profile = React.createClass({
     },
     render: function () {
         var username = this.getParams().username;
+        console.log('Profile render username: ' + username);
         return (
             <div className="row">
                 <div className="col-md-4">
