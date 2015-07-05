@@ -17,10 +17,10 @@ var Profile = React.createClass({
         }
     },
     componentDidMount: function () {
-        console.log('Profile: componentDidMount');
+        //console.log('Profile: componentDidMount');
         //this.ref = new Firebase('https://github-note-taker.firebaseio.com');
-        var ref = new Firebase('burning-heat-2130.firebaseio.com');
-        ref.authAnonymously(function (error, authData) {
+        this.ref = new Firebase('burning-heat-2130.firebaseio.com');
+        this.ref.authAnonymously(function (error, authData) {
             if (error) {
                 console.log("Login Failed!", error);
             } else {
@@ -38,7 +38,7 @@ var Profile = React.createClass({
         //        console.log("Authenticated successfully with payload:", authData);
         //    }
         //});
-        this.ref = ref;
+        //this.ref = ref;
         var childRef = this.ref.child(this.getParams().username);
         this.bindAsArray(childRef, 'notes');
 
@@ -55,7 +55,7 @@ var Profile = React.createClass({
     },
     render: function () {
         var username = this.getParams().username;
-        console.log('Profile render username: ' + username);
+        //console.log('Profile render username: ' + username);
         return (
             <div className="row">
                 <div className="col-md-4">
